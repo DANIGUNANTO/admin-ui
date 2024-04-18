@@ -1,8 +1,8 @@
 import "./home.scss";
-import Sidebar from "../component/sidebar/Sidebar";
-import Navbar from "../component/navbar/Navbar";
-import Widget from "../component/widget/Widget";
-import Chart from "../component/chart/Chart";
+import Sidebar from "../../component/sidebar/Sidebar";
+import Navbar from "../../component/navbar/Navbar";
+import Widget from "../../component/widget/Widget";
+import Chart from "../../component/chart/Chart";
 
 const Home = () => {
   return (
