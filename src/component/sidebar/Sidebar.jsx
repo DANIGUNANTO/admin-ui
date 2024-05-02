@@ -1,62 +1,70 @@
 import "./sidebar.scss";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import PersonIcon from '@mui/icons-material/Person';
-import CategoryIcon from '@mui/icons-material/Category';
-import FilterFramesIcon from '@mui/icons-material/FilterFrames';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import LogoutIcon from '@mui/icons-material/Logout';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import CategoryIcon from '@mui/icons-material/Category';
 
-const sidebar = () => {
-  return (
-    <div className="sidebar">
-    <div className="top">
-      <Link to="/">
-        <span className="logo">Store</span>
-      </Link>
-    </div>
-    <hr />
-    <div className="center">
-      <ul>
-        <p className="title">MAIN</p>
-        <li>
-            <DashboardIcon className="icon"/>
-          <span>Dashboard</span>
-        </li>
-        <p className="title">LIST</p>
-        <Link to="/users">
-          <li>
-          <PersonIcon className="icon"/>
-            <span>Users</span>
-          </li>
+const Sidebar = () => {
+      return ( <div className="sidebar">
+      <div className="top">
+        <Link to="/">
+          <span className="logo">Store</span>
         </Link>
-        <Link to="/products">
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+          <p className="title">MAIN</p>
+          <li>
+          <DashboardIcon className="icon"/>
+            <span>Dashboard</span>
+          </li>
+          <p className="title">LIST</p>
+          <Link to="/users">
+            <li>
+            <PersonOutlineIcon className="icon"/>
+              <span>Users</span>
+            </li>
+          </Link>
+          <Link to="/products">
+            <li>
+            <InventoryIcon className="icon"/>
+              <span>Products</span>
+            </li>
+          </Link>
+          <Link to="/Orders">
+          <li>
+          <LocalGroceryStoreIcon className="icon"/>
+            <span>Orders</span>
+          </li>
+          </Link>
+          <Link to="/Categories">
           <li>
           <CategoryIcon className="icon"/>
-            <span>Products</span>
+            <span>Categories</span>
           </li>
-        </Link>
-        <li>
-        <FilterFramesIcon className="icon"/>
-          <span>Orders</span>
-        </li>
-        <p className="title">USER</p>
-        <li>
-        <AccountCircleIcon className="icon"/>
-          <span>Profile</span>
-        </li>
-        <li>
-        <LogoutIcon className="icon"/>
-          <span>Logout</span>
-        </li>
-      </ul>
+          </Link>
+          <p className="title">USER</p>
+          <li>
+          <AccountCircleIcon className="icon"/>
+            <span>Profile</span>
+          </li>
+          <li>
+          <ExitToAppIcon className="icon"/>
+            <span>Logout</span>
+          </li>
+        </ul>
+      </div>
+      <div className="bottom">
+        <div className="colorOption"></div>
+        <div className="colorOption"></div>
+      </div>
     </div>
-    <div className="bottom">
-      <div className="colorOption"></div>
-      <div className="colorOption"></div>
-    </div>
-  </div>
-  )
-}
+  );
+};
 
-export default sidebar
+export default Sidebar;
