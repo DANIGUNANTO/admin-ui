@@ -9,10 +9,14 @@ import MyList from "./pages/MyList/MyList";
 import Widget from "./component/widget/Widget";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { productInputs, userInputs } from "./formsource"
+import "./style/dark.scss";
+import { useContext } from "react";
+import { DarkModeContext } from "./context/darkModeContext";
 
 function App() {
+  const {darkMode} = useContext(DarkModeContext);
   return (
-    <>
+    <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
           <Route path="/">
@@ -40,7 +44,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+      </div>
   );
 }
 
