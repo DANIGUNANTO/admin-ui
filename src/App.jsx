@@ -31,26 +31,26 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />}></Route>
-            <Route path="login" element={<Login />}></Route>
+            <Route path="login" element={<NotRequireAuth><Login /></NotRequireAuth>}></Route>
+            <Route index element={<RequireAuth><Home /></RequireAuth>}></Route>
             <Route path="users">
-              <Route index element={<List />}></Route>
-              <Route path=":userId" element={<Single />}></Route>
-              <Route 
-                path="new" 
-                element={<New inputs={userInputs} title="Add New User"/>}
-                />
+              <Route index element={<RequireAuth><List /></RequireAuth>}></Route>
+              <Route path=":userId" element={<RequireAuth><Single /></RequireAuth>}></Route>
+              <Route
+                path="new"
+                element={<RequireAuth><New inputs={userInputs} title="Add New User" /></RequireAuth>}
+              />
             </Route>
             <Route path="products">
-              <Route index element={<List />}></Route>
-              <Route path=":productsId" element={<Single />}></Route>
+              <Route index element={<RequireAuth><List /></RequireAuth>}></Route>
+              <Route path=":productId" element={<RequireAuth><Single /></RequireAuth>}></Route>
               <Route
-                path="new" 
-                element={<New inputs={productInputs} title="Add New Products"/>}
-                />
+                path="new"
+                element={<RequireAuth><New inputs={productInputs} title="Add New Product" /></RequireAuth>}
+              />
             </Route>
             <Route path="categories">
-              <Route index element={<MyList />}></Route>
+              <Route index element={<RequireAuth><MyList /></RequireAuth>}></Route>
             </Route>
           </Route>
         </Routes>

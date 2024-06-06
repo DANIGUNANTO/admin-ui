@@ -4,13 +4,12 @@ import App from './App';
 import { DarkModeContextProvider } from './context/darkModeContext';
 import { AuthContextProvider } from './AuthContext';
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <DarkModeContextProvider>
       <AuthContextProvider>
       <App />
       </AuthContextProvider>
     </DarkModeContextProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
