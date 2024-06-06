@@ -2,17 +2,16 @@ import { useState } from "react";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
+import MyList from "./pages/MyList/MyList"
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-import MyDatatable from "./component/mydatatable/MyDatatable";
-import MyList from "./pages/MyList/MyList";
-import Widget from "./component/widget/Widget";
-import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
-import { productInputs, userInputs } from "./formsource"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { productInputs, userInputs } from "./formsource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./AuthContext";
+
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -20,12 +19,13 @@ function App() {
   const { currentUser } = useContext(AuthContext)
 
   const RequireAuth = ({ children }) => {
-    return currentUser ? children : <Navigate to="/login" />
+    return currentUser ? children : <Navigate to="/login" />;
+  };
+  
+  const NotRequireAuth = ({ children }) => {
+    return currentUser ? <Navigate to="/" /> : children;
   };
 
-  const NotRequireAuth = ({ children }) => {
-    return NotRequireAuth ? <Navigate to="/login" /> : chil
-  };
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
@@ -55,7 +55,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-      </div>
+    </div>
   );
 }
 
