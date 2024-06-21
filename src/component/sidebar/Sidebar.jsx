@@ -1,5 +1,5 @@
 import "./sidebar.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonIcon from '@mui/icons-material/Person';
 import AddCardIcon from '@mui/icons-material/AddCard';
@@ -9,9 +9,28 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import CategoryIcon from '@mui/icons-material/Category';
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
+import { AuthContext} from "../../AuthContext";
+
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
+
+  const { dispatch: authDispacth } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    signOut(auth)
+    .then(() => {
+      authDispacth({ type: "LOGOUT" });
+      navigate("/login"); 
+    })
+    .catch((error) => {
+      console.error("Logout error: ", error);
+    })
+
+  }
   return (
     <div className="sidebar">
   <div className="top">
@@ -55,7 +74,7 @@ const Sidebar = () => {
         <AccountBoxIcon className="icon"/>
         <span>Profile</span>
       </li>
-      <li>
+      <li onClick={handleLogout}>
       <LogoutIcon className="icon"/>
         <span>Logout</span>
       </li>
