@@ -6,7 +6,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useEffect, useState } from "react";
-import { collection, query, where, getDoc } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const Widget = ({ type }) => {
@@ -38,6 +38,7 @@ const Widget = ({ type }) => {
         title: "ORDERS",
         isMoney: false,
         link: "View all orders",
+        query: "users",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -54,6 +55,7 @@ const Widget = ({ type }) => {
         title: "EARNINGS",
         isMoney: true,
         link: "View net earnings",
+        query: "users",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -67,6 +69,7 @@ const Widget = ({ type }) => {
         title: "BALANCE",
         isMoney: true,
         link: "See details",
+        query: "users",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
