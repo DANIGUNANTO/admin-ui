@@ -2,7 +2,6 @@ import "./single.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
 import Navbar from "../../component/navbar/Navbar";
 import Chart from "../../component/chart/Chart";
-import List from "../../component/datatable/Datatable";
 import Datatable from "../../component/datatable/Datatable";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -28,6 +27,8 @@ const Single = ({columns}) => {
             break; 
           case "products":
             setData({...docSnapData, detailName : docSnapData.title}); 
+          case "categories":
+            setData({...docSnapData, detailName : docSnapData.displayName});
             break; 
           default: 
             break;
@@ -40,43 +41,46 @@ const Single = ({columns}) => {
   const AllKeys = Object.keys(data); 
   const keys = AllKeys.filter(e => e !== 'timeStamp' && e !== 'img' && e !== 'password' && e !== 'displayName' && e !== 'title' && e !== 'detailName')
 
+  
   return (
     <div className="single">
       <Sidebar />
       <div className="singleContainer">
         <Navbar />
         <div className="top">
-         <div className="left">
-         <div className="editButton">Detail</div>
-         <h1 className="title">Information</h1>
-         <div className="item">
-           <img
-            src={data.img}
-            alt=""
-            className="itemImg"
-          />              
-          <div className="details">
-            <h1 className="itemTitle">
-             {data.detailName}
-              </h1> 
+        <div className="left">
+  <div className="editButton">Detail</div>
+  <h1 className="title">Information</h1>
+  <div className="item">
+    <img
+      src={data.img}
+      alt=""
+      className="itemImg"
+    />              
+    <div className="details">
+      <h1 className="itemTitle">
+        {data.detailName}
+      </h1> 
 
-          {keys.map((key) => (
-             <div className="detailItem" key={key}>
-              <span className="itemKey">{key}:</span>
-              <span className="itemValue">{data[key]}</span>
-           </div>
-         ))} 
-
+      {keys.map((key) => (
+        <div className="detailItem" key={key}>
+          <span className="itemKey">{key}:</span>
+          <span className="itemValue">{data[key]}</span>
+        </div>
+      ))}
+      
     </div>
   </div>
 </div>
-<div className="right">
+
+          <div className="right">
   <Chart aspect={3 / 1} type="order" />
 </div>
         </div>
+        
         <div className="bottom">
   <h1 className="title">Last Transactions</h1>
-  <Datatable columns={columns}/>
+  <Datatable columns={columns} />
 </div>
       </div>
     </div>

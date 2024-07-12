@@ -3,7 +3,9 @@ import Sidebar from "../../component/sidebar/Sidebar";
 import Navbar from "../../component/navbar/Navbar";
 import Widget from "../../component/widget/Widget";
 import MyDatatable from "../../component/mydatatable/MyDatatable";
-
+import List from "../list/List";
+import { userColumns, productColumns, categoryColumns } from "../../datatablesource";
+import Datatable from "../../component/datatable/Datatable";
 
 const MyList = () => {
   return (
@@ -12,12 +14,11 @@ const MyList = () => {
       <div className="mylistContainer">
         <Navbar />
         <div className="widgets">
-          <Widget type="user" />
-          <Widget type="order"/>
-          <Widget type="earning"/>
+          <Widget type="users" />
+          <Widget type="categories" />
+          <Widget type="products" />
         </div>
-        <MyDatatable />
-        
+        <Datatable columns={categoryColumns} />
       </div>
     </div>
   );
