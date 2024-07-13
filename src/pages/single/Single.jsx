@@ -68,7 +68,7 @@ const Single = ({columns}) => {
           <span className="itemValue">{data[key]}</span>
         </div>
       ))}
-      
+
     </div>
   </div>
 </div>

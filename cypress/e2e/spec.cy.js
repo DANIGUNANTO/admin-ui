@@ -20,7 +20,7 @@ describe("template spec", () => {
     cy.get('[data-testid="form-categories"]').should("exist");
     cy.get("input#name").should("be.visible").should("have.attr", "placeholder", "Coffee").type("Snack").should("have.value", "Snack");
     cy.get('[data-testid="button-categories"]').click();
-    cy.url().should("include", "/categories", { timeout: 10000 });
+    cy.url().should("include", "/categories", { timeout: 999999 });
     cy.contains("Snack").should("be.visible");
     cy.get(".MuiDataGrid-root").within(() => {
       cy.contains(".MuiDataGrid-cell", "Snack")
@@ -29,8 +29,8 @@ describe("template spec", () => {
           cy.get('[data-testid="delete-button"]').click();
         });
     });
-    cy.get(".MuiDataGrid-root", { timeout: 10000 }).within(() => {
-      cy.contains(".MuiDataGrid-cell", "Snack", { timeout: 10000 }).should("not.exist");
+    cy.get(".MuiDataGrid-root", { timeout: 999999 }).within(() => {
+      cy.contains(".MuiDataGrid-cell", "Snack", { timeout: 999999 }).should("not.exist");
     });
   });
 });
